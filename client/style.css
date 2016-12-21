@@ -1,0 +1,22 @@
+.frontbanner {
+	background-color: #FF6B4B;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-top: -15px;
+}
+
+.frontlogo {
+	font-family: "ProximaNova-Reg";
+	color: white;
+}
+
+.bodytext {
+	font-family: "ProximaNova-Reg";
+	font-size: 120%;
+	color: white;
+}
+/*FONTS*/
+@font-face {
+  font-family: 'ProximaNova-Reg';
+  src: url('/fonts/ProximaNova-Reg.otf');
+}
