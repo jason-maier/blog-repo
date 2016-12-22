@@ -6,6 +6,8 @@ var app = express();
 //Access to all Static files
 app.use(express.static(path.join(__dirname, '/client')));
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.get('/', function(req,res){
+    res.send(200).end();
 })
+
+app.listen(process.env.PORT || 3000)

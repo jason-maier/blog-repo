@@ -7,6 +7,9 @@
     "test": "test",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "6.9.1"
+  },
   "author": "Jason Maier",
   "license": "ISC",
   "dependencies": {
