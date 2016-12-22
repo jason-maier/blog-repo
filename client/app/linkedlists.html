@@ -1,1 +1,81 @@
-<h1> All about Linked Lists </h1>
+<img class="articlebanner" src="http://i.imgur.com/PvhRxKI.png"></img>
+<div class="article col-md-8 col-md-offset-2">
+	<h2> So...what are Linked Lists? </h2>
+	<p> Yeah, I get it. You're not asking for you, you're asking for a friend. Or you're filling in to give a technical interview in the next ten minutes and need to find out for yourself.</p>
+	<p> At its most basic level a linked list is a data structure that represents a sequence of nodes. Simple right? </p>
+	<p>There are two types of linked lists: </p>
+	<ul>
+		<li>Singly Linked Lists: each node points to the next node in the linked list.</li>
+		<li>Doubly Linked Lists: each node points to both the previous node and next node.</li>
+	</ul>
+	<p>Some Pros of Linked Lists:</p>
+	<ul>
+		<li>Unlike arrays you can add and remove items to the beginning of lists in constant time. Think of all the rebinding of indices that makes this impossible in arrays.</li>
+	</ul>
+	<p>Some Cons of Linked Lists:</p>
+	<ul>	
+		<li>You can't look up values at particular indices in constant time. So, if you want to see the value at Nth node in your linked list, you need to iterate through N nodes.</li>
+	</ul>
+	<h2>Instantiating (doubly) Linked Lists</h2>
+	<p><i>For all of the upcoming code - we'll be working with doubly linked lists exclusively.</i></p>
+	<p>The very first thing we need to do is create our constructor. This will allow us to instantiate new instances of the nodes that populate our doubly linked list.</p>
+	<pre class="prettyprint">function DoublyNode(value) {  
+    	this.data = value;
+    	this.previous = null;
+    	this.next = null;
+}	</pre>
+	<p>The next thing we need to do is create the constructor for the doubly linked list itself. </p>
+	<p><i>Note: Unlike singly linked lists - we need to account both the head AND the tail.</i></p>
+	<pre class="prettyprint">function DoublyList() {  
+    this._length = 0;
+    this.head = null;
+    this.tail = null;
+}  </pre>
+	<h2>Adding Methods to Linked Lists</h2>
+	<p>Right now our doubly linked list is quite boring - in that it really doesn't do anything. Let's add some methods to give our linked list some functionality.</p>
+	<p>First, let's add the ability to <b>add nodes</b> to our doubly linked list, seems like a pretty good place to start.</p>
+	<p>Some things to note about our code:</p>
+	<ul>
+		<li>Our if statement checks to see if our current list has a length (if there are already nodes added or if this is the first one since length is set to 0 at instantiation).</li>
+		<li>If this is the first node added to the list it's very straight forward - the node is set as both the value of the doubly linked list's head and tail.</li>
+		<li>If node's are already in existence - the node we are adding replaces the current tail as the linked list's new tail. The new node points to the old tail as it's previous node.</li>
+	</ul>
+	<pre class="prettyprint">DoublyList.prototype.add = function(value) {  
+    var node = new DoublyNode(value);
+    if (this._length) {
+        this.tail.next = node;
+        node.previous = this.tail;
+        this.tail = node;
+    } else {
+        this.head = node;
+        this.tail = node;
+    }
+    this._length++;     
+    return node;
+};</pre>
+	<p>Now let's add the ability to <b>search for nodes</b> at a given position. 
+Some notes about this code:</p>
+	<ul>
+		<li>The if statement accounts for all of the input positions that are invalid. If the length of the linked list is 0, if a position of less than one is given, or a position larger than the length of the linked list is given.</li>
+		<li>The while loop iterates through our linked list's nodes until count (the variable we defined at the beginning) is equal to the position(the argument of this method).</li>
+		<li>After the while loop concludes our method will return the entire node at the position we asked for.</li>
+		<li>Unlike arrays, this takes place in linear time.</li>
+	</ul>
+	<pre class="prettyprint">DoublyList.prototype.searchNodeAt = function(position) {  
+    var currentNode = this.head,
+        length = this._length,
+        count = 1,
+    if (length === 0 || position < 1 || position > length) {
+        console.error('Failure: This is an invalid position!');
+    } 
+    while (count < position) {
+        currentNode = currentNode.next;
+        count++;
+    }
+    return currentNode;
+};</pre>
+	<h2>The "Runner" Technique</h2>
+	<p>This is the technique where now that you have a linked list with working methods you close your laptop and run away from it. Just kidding this is actually just a technique you can use to solve linked list problems.</p>
+	<p>What the runner technique (really) is: you iterate through the linked list with two points simultaneous. These two nodes have different properties: the "fast" pointer either starts ahead by a fixed amount or hops multiple nodes at a time, the "slow" pointer iterates through the linked list one node at a time.</p>
+	<p>Some types of questions that warrant you using this technique: figuring out the midpoint of your linked list, figuring out the length (if it's not provided), (most commonly) figuring out where two lists meet or merge.</p>
+</div>

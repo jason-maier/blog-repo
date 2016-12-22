@@ -4,6 +4,9 @@ angular.module('blog', ['ngRoute'])
     .when('/', {
       templateUrl: 'app/landing.html',
     })
+    .when('/home', {
+      templateUrl: 'app/landing.html',
+    })
     .when('/linkedlists', {
       templateUrl: 'app/linkedlists.html',
     })

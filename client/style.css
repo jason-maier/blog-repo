@@ -1,7 +1,7 @@
 .frontbanner {
 	background-color: #FF6B4B;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 100px;
+	padding-bottom: 100px;
 	margin-top: -15px;
 }
 
@@ -15,8 +15,36 @@
 	font-size: 120%;
 	color: white;
 }
+.article {
+	margin-bottom: 25px;
+}
+.articlebanner {
+	width: 100%;
+	margin: auto;
+}
+pre {
+/*	border: none !important;*/
+	/*background-color: #2b303b;*/
+	margin-left: 50px;
+	font-size: 125%;
+	padding: 10px !important;
+}
+a {
+	text-decoration: none !important;
+	color: black;
+}
+a:hover {
+	color: #FF6B4B;
+}
+li {
+	font-size: 130%;
+}
+p {
+	font-size: 130%;
+}
 /*FONTS*/
 @font-face {
   font-family: 'ProximaNova-Reg';
   src: url('/fonts/ProximaNova-Reg.otf');
 }
+
