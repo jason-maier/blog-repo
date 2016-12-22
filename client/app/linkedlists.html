@@ -1,6 +1,6 @@
 <img class="articlebanner" src="http://i.imgur.com/PvhRxKI.png"></img>
 <div class="article col-md-8 col-md-offset-2">
-	<h2> So...what are Linked Lists? </h2>
+	<h1 class="makefont"> So...what are Linked Lists? </h1>
 	<p> Yeah, I get it. You're not asking for you, you're asking for a friend. Or you're filling in to give a technical interview in the next ten minutes and need to find out for yourself.</p>
 	<p> At its most basic level a linked list is a data structure that represents a sequence of nodes. Simple right? </p>
 	<p>There are two types of linked lists: </p>
@@ -16,7 +16,7 @@
 	<ul>	
 		<li>You can't look up values at particular indices in constant time. So, if you want to see the value at Nth node in your linked list, you need to iterate through N nodes.</li>
 	</ul>
-	<h2>Instantiating (doubly) Linked Lists</h2>
+	<h2 class="makefont">Instantiating (doubly) Linked Lists</h2>
 	<p><i>For all of the upcoming code - we'll be working with doubly linked lists exclusively.</i></p>
 	<p>The very first thing we need to do is create our constructor. This will allow us to instantiate new instances of the nodes that populate our doubly linked list.</p>
 	<pre class="prettyprint">function DoublyNode(value) {  
@@ -31,7 +31,7 @@
     this.head = null;
     this.tail = null;
 }  </pre>
-	<h2>Adding Methods to Linked Lists</h2>
+	<h2 class="makefont">Adding Methods to Linked Lists</h2>
 	<p>Right now our doubly linked list is quite boring - in that it really doesn't do anything. Let's add some methods to give our linked list some functionality.</p>
 	<p>First, let's add the ability to <b>add nodes</b> to our doubly linked list, seems like a pretty good place to start.</p>
 	<p>Some things to note about our code:</p>
@@ -74,7 +74,7 @@ Some notes about this code:</p>
     }
     return currentNode;
 };</pre>
-	<h2>The "Runner" Technique</h2>
+	<h2 class="makefont">The "Runner" Technique</h2>
 	<p>This is the technique where now that you have a linked list with working methods you close your laptop and run away from it. Just kidding this is actually just a technique you can use to solve linked list problems.</p>
 	<p>What the runner technique (really) is: you iterate through the linked list with two points simultaneous. These two nodes have different properties: the "fast" pointer either starts ahead by a fixed amount or hops multiple nodes at a time, the "slow" pointer iterates through the linked list one node at a time.</p>
 	<p>Some types of questions that warrant you using this technique: figuring out the midpoint of your linked list, figuring out the length (if it's not provided), (most commonly) figuring out where two lists meet or merge.</p>

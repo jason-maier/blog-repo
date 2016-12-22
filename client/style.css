@@ -8,11 +8,18 @@
 .frontlogo {
 	font-family: "ProximaNova-Reg";
 	color: white;
+	font-size: 400%;
 }
-
+.logo {
+	font-family: "ProximaNova-Reg";
+	font-size: 250%;
+}
+.navitems {
+	font-family: "ProximaNova-Reg";
+}
 .bodytext {
 	font-family: "ProximaNova-Reg";
-	font-size: 120%;
+	font-size: 140%;
 	color: white;
 }
 .article {
@@ -21,6 +28,9 @@
 .articlebanner {
 	width: 100%;
 	margin: auto;
+}
+.makefont {
+	font-family: "ProximaNova-Thin";
 }
 pre {
 /*	border: none !important;*/
@@ -34,7 +44,7 @@ a {
 	color: black;
 }
 a:hover {
-	color: #FF6B4B;
+	color: #FF6B4B !important;
 }
 li {
 	font-size: 130%;
@@ -45,6 +55,10 @@ p {
 /*FONTS*/
 @font-face {
   font-family: 'ProximaNova-Reg';
-  src: url('/fonts/ProximaNova-Reg.otf');
+  src: url('/fonts/ProximaNova-Thin.otf');
 }
 
+@font-face {
+  font-family: 'ProximaNova-Thin';
+  src: url('/fonts/ProximaNova-Reg.otf');
+}
