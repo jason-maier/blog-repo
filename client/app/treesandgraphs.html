@@ -1,0 +1,66 @@
+<img class="articlebanner" src="http://i.imgur.com/TJea3p2.png"></img>
+<div class="article col-md-8 col-md-offset-2">
+	<h1 class="makefont"> Trees and Graphs </h1>
+	<p> It's a bird, it's a plane, it's a terrible programming pun about trees and graphs. Trees and graphs are some of the most common data structures around, but solving problems that require you to know their intricacies can get tricky.</p>
+	<h2 class="makefont"> What are Trees? </h2>
+	<p>Trees are data structures (duh) whose defining feature is that it is comprised of nodes.  Trees begin at root nodes that can contain child nodes, that can contain child nodes, that can contain child nodes...and so on.</p>
+	<p> Here is a simple class definition of a tree's node: </p>
+	<pre><code class="prettyprint">function Node(value) {  
+    	this.data = value;
+    	this.children = [];
+    	//Optional property that points to a node's parents
+    	this.parent = null;
+}	</code></pre>
+	<p> Some notes about nodes: </p>
+	<ul>
+		<li> Nodes may or may not be in any partifular order, </li>
+		<li> Nodes can have any data type as a value. </li>
+		<li> Nodes may or may not point to parent nodes - ours does because we're overachievers.</li>
+	</ul>
+	<h2 class="makefont">Binary and Binary Search Trees</h2>
+	<p>Binary trees derive their name from the maximum number of children nodes each node can have...so 2.</p>
+	<p>Binary search trees on the other hand are binary trees that are sorted by node values where all left descendants are less than a given value and all right descendants are greater than a given value. </p>
+	<p> Here is a class definition of a binary search tree's node and a constructor for the binary search tree: </p>
+	<pre><code class="prettyprint">function Node(value) {  
+    	this.data = value;
+    	this.left = null;
+    	this.right = null;
+}
+
+function BinarySearchTree(){
+  	this.root = null;
+}	
+
+BinarySearchTree.prototype.push = function(val){
+   if(!this.root){
+      this.root = new Node(val);
+      return;
+   }
+   var currentNode = root;
+   var newNode = new Node(val); 
+   while(currentNode){
+      if(val < currentNode.value){
+          if(!currentNode.left){
+             currentNode.left = newNode;
+             break;
+          }
+          else{
+             currentNode = currentNode.left;
+        }
+     }
+     else{
+         if(!currentNode.right){
+            currentNode.right = newNode;
+            break;
+         }
+         else{
+            currentNode = currentNode.right;
+         }
+     }
+  }
+}</code></pre>
+	<h2 class="makefont">Complete, Full and Perfect Binary Trees</h2>
+	<p><b>Complete Binary Trees:</b> these are binary trees where every node is fully filled (except, of course, the last level of nodes.  Nodes are filled left to right - so if a node has a left child then it is considered filled.</p>
+	<p><b>Full Binary Trees:</b> a binary tree is considered full if every node has either 0 (none) or 2 (the maximum) children.  If a node has one child than the binary tree is not full - simple right?</p>
+	<p><b>Perfect Binary Trees:</b> a binary tree is considered perfect if it is BOTH full and complete.  Because it meets these conditions you can assume leaf nodes will be at the same level and this final level has the maximum number of nodes.</p>
+</div>

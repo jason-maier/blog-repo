@@ -13,6 +13,9 @@ angular.module('blog', ['ngRoute'])
     .when('/stacksandqueues', {
       templateUrl: 'app/stacksandqueues.html',
     })
+    .when('/treesandgraphs', {
+      templateUrl: 'app/treesandgraphs.html',
+    })
     .when('/about', {
       templateUrl: 'app/about.html',
     })
