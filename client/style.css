@@ -32,6 +32,9 @@
 .makefont {
 	font-family: "ProximaNova-Thin";
 }
+.social {
+	width: 50%;
+}
 pre {
 	margin-left: 50px;
 	font-size: 125%;

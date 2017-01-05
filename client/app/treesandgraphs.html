@@ -63,4 +63,74 @@ BinarySearchTree.prototype.push = function(val){
 	<p><b>Complete Binary Trees:</b> these are binary trees where every node is fully filled (except, of course, the last level of nodes.  Nodes are filled left to right - so if a node has a left child then it is considered filled.</p>
 	<p><b>Full Binary Trees:</b> a binary tree is considered full if every node has either 0 (none) or 2 (the maximum) children.  If a node has one child than the binary tree is not full - simple right?</p>
 	<p><b>Perfect Binary Trees:</b> a binary tree is considered perfect if it is BOTH full and complete.  Because it meets these conditions you can assume leaf nodes will be at the same level and this final level has the maximum number of nodes.</p>
+	<h2 class="makefont">Binary Tree Traversal</h2>
+  <p><b>In-Order Traversal</b></p>
+  <p>In order traversal means visiting the left subtree, the root node, and then the right subtree.  If you print out each value using in-order traversal you will notice that you are visiting the nodes in ascending order of value.  If you think about the way binary trees work this actually makes sense, since smaller values than the root node are always sorted to the left.</p>
+  <pre><code class="prettyprint">BinarySearchTree.prototype.traverseIn = function(process) {
+        function inOrder(node){
+            if (node){
+                if (node.left !== null){
+                    inOrder(node.left);
+                }            
+                //call the process method on this node
+                process.call(this, node);
+                if (node.right !== null){
+                    inOrder(node.right);
+                }
+            }
+        }
+        inOrder(this._root);
+    }
+} </code></pre>
+  <p><b>Pre-Order Traversal</b></p>
+  <p>Pre-order traversal visits the root node first - and then visits the left subtree and right subtree. I remember this by thinking Pre (visit root node first) and then order (left to right subtree).</p>
+  <pre><code class="prettyprint">BinarySearchTree.prototype.traversePre = function(process){
+    function preOrder(node){
+      if(node){
+        process.call(this, node);
+        if (node.left !== null){
+          preOrder(node.left);
+        } 
+        if (node.right !== null){
+          preOrder(node.right);
+        } 
+      }
+    }
+  }</code></pre>
+  <p><b>Post-Order Traversal</b></p>
+	<p>Post-order traversal visits the root node after and then the left and right sub tree.  Similarly, you can remember this by thinking Post (visit root node after) order (left to right subtree).</p>
+  <pre><code class="prettyprint">BinarySearchTree.prototype.traversePost = function(process){
+    function postOrder(node){
+      if(node){
+        if (node.left !== null){
+          postOrder(node.left);
+        } 
+        if (node.right !== null){
+          postOrder(node.right);
+        } 
+        process.call(this, node);
+      }
+    }
+  }</code></pre>
+  <h2 class="makefont">Binary Heaps</h2>
+  <p> Even though this section only makes reference to min-heaps, everything is also applicable to max-heaps.  The only difference is that max-heaps are in descending and not ascending order.</p>
+  <p>A min-heap is a complete binary tree (completely filled - other than the rightmost elements).  In min-heaps each node is smaller than its children.  Because of this structure, a min-heap's root is always the smallest element in the tree.</p>
+  <p><b>Inserting Elements into min-heaps</b></p>
+  <p> When you insert an element into a min-heap you start by inserting it at the bottom - you then swap and bubble it up through its parents until it's at the apporopriate spot.  The time complexity for this is O(log n).</p>
+  <p><b>Extracting Minimum Elements from min-heaps</b></p>
+  <p>Since the minimum element is always the root node - finding the minimum element is super easy.  After identifying your minimum value we now need to replace it.  The most efficient way to do this is to temporarily replace your root node with the last element in your heap and then bubble it down (sort of like the reverse of what we did in inserting) until the root is once again the minimum. You bubble down this value by switching it with the minimum of your left and right nodes.</p>
+  <h2 class="makefont">Prefix Tries AKA Tries</h2>
+  <p> Prefix trees are trees where characters are stored at each node.  Paths down these trees may represent words - null nodes (which contains *) mark the ends of complete words.</p>
+  <p>This may not seem super useful - but tries can be used to look up whether or not strings are valid by storing the entire english language.  In O(n) time it can do this.  It's also better than using hash tables because it can tell us if a string is a prefix of a valid word, whereas hash tables can only work for completed strings.</p>
+  <h2 class="makefont">Graphs</h2>
+  <p>In it's most simple form - a graph is a collection of nodes with edges between them.  Sound familiar?  That is because trees are graphs.  It is important to note, however, that not all graphs are trees. (Wow, SAT flashbacks right?)</p>
+  <p>Some features of graphs:</p>
+  <ul>  
+    <li>Edges between graphs can be directed or undirected.  This means that nodes in a graph can either point in one direction (This is directed where Node A points to Node B - but B doesn't point to A) or bidirectional (all connected nodes point to each other).</li>
+    <li>Graphs can have cycles.  Note: this is one of the main differences between trees and graphs.  Trees cannot have cycles.</li>
+  </ul>
+  <h2 class="makefont">Graph Search</h2>
+  <p>There are two common ways to search a graph: depth-first search (DFS) and breadth-first search (BFS). </p>
+  <p><b>Depth-first Search:</b> you start at a node and move through each branch completely before moving on to another branch.  The way I was taught to remember this is that the name indicates that the very first thing you're doing is going deep before you go wide. This form of search is preferred if you want to visit every node in a graph.</p>
+  <p><b>Breadth-first Search:</b> you start at a node and explore each neighboring node before moving on to children.  Similarly, the name indicates that we're going wide before we go deep.  Preferred if you want to find the shortest path between two nodes.</p>
 </div>
